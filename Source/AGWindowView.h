@@ -26,6 +26,17 @@
 #import "AGWindowViewDefines.h"
 
 /**
+ *  @protocol AGHitTestDelegate
+ *  @description Delegate which can respond to hitTest: method cought by AGWindowView. If not set super corresponding method is called.
+ */
+@protocol AGHitTestDelegate <NSObject>
+
+@optional
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event;
+
+@end
+
+/**
  * @class AGWindowView
  * @description A view which is added to a UIWindow. It will automatically fill window and rotate along with statusbar rotations.
  */
@@ -33,6 +44,11 @@
 @interface AGWindowView : UIView
 
 @property (nonatomic, assign) AGInterfaceOrientationMask supportedInterfaceOrientations;
+
+/**
+ *  @property id<AGHitTestDelegate> hitTestDelegate. Allows programmer to pass touches to views below.
+ */
+@property (nonatomic, weak) id<AGHitTestDelegate> hitTestDelegate;
 
 /**
  * @property UIViewController *controller. Convinience for having a strong reference to your controller.

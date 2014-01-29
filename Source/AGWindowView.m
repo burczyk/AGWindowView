@@ -364,6 +364,18 @@ static BOOL IS_BELOW_IOS_7()
     return index == subviewsOnSuperview.count - 1;
 }
 
+#pragma mark - hitTest: method passing to delegate 
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    if (_hitTestDelegate) {
+        return [_hitTestDelegate hitTest:point withEvent:event];
+    }
+    else
+    {
+        return [super hitTest:point withEvent:event];
+    }
+}
+
 #pragma mark - Convenience methods
 
 + (NSArray *)allActiveWindowViews
