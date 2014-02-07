@@ -63,7 +63,6 @@
 - (void)addSubViewAndKeepSamePosition:(UIView *)view;
 - (void)addSubviewAndFillBounds:(UIView *)view;
 - (void)addSubviewAndFillBounds:(UIView *)view withSlideUpAnimationOnDone:(void(^)(void))onDone;
-- (void)addSubviewWithSlideUpAnimationAndFillBounds:(UIView *)view beforeAnimation:(void(^)(void))beforeAnimationBlock completion:(void(^)(void))completionBlock;
 - (void)fadeOutAndRemoveFromSuperview:(void(^)(void))onDone;
 - (void)slideDownSubviewsAndRemoveFromSuperview:(void(^)(void))onDone;
 

@@ -313,32 +313,6 @@ static BOOL IS_BELOW_IOS_7()
     }];
 }
 
-- (void)addSubviewWithSlideUpAnimationAndFillBounds:(UIView *)view beforeAnimation:(void(^)(void))beforeAnimationBlock completion:(void(^)(void))completionBlock
-{
-    CGRect endFrame = [self bounds];
-    CGRect startFrame = endFrame;
-    startFrame.origin.y += startFrame.size.height;
-    
-    view.frame = startFrame;
-    [self addSubview:view];
-    
-    if (beforeAnimationBlock)
-    {
-        beforeAnimationBlock();
-    }
-    
-    [UIView animateWithDuration:0.4 animations:^{
-        view.frame = endFrame;
-        self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.8];
-        self.opaque = YES;
-    } completion:^(BOOL finished) {
-        if(completionBlock)
-        {
-            completionBlock();
-        }
-    }];
-}
-
 - (void)fadeOutAndRemoveFromSuperview:(void(^)(void))onDone
 {
     [UIView animateWithDuration:0.4 animations:^{
